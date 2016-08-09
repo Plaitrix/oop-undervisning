@@ -5,37 +5,43 @@ using System.Web;
 
 namespace KurvClass
 {
-    public class CartProduct
+    public class Cart
     {
-        #region fields
-        private int id;
-        private string name;
-        private decimal price;
-        private int amount;
-        private decimal totalPrice;
-        #endregion
+        private List<CartProduct> items;
 
-        #region properties
-        public int Id { get { return this.id; } set { this.id = value; } }
-        public string Name { get { return this.name; } set { this.name = value; } }
-        public decimal Price { get { return this.price; } set { this.price = value; } }
-        public int Amount { get { return this.amount; } set { this.amount = value; } }
-        public decimal TotalPrice { get { return this.totalPrice; } set { this.totalPrice = value; } }
-        #endregion
-
-        #region constructors
-        public CartProduct() { }
-        public CartProduct(int id, string name, decimal price, int amount)
+        public Cart()
         {
-            this.id = id;
-            this.name = name;
-            this.price = price;
-            this.amount = amount;
-            this.totalPrice = this.price * this.amount;
+            this.items = ShopCart();
         }
-        #endregion
 
-        #region methods
-        #endregion
+        public List<CartProduct> Items { get { return this.items } }
+        private List<CartProduct> ShopCart()
+        {
+            List<CartProduct> cart = new List<CartProduct>();
+            if (HttpContext.Current.Session["Cart"] == null)
+            {
+                HttpContext.Current.Session.Add("Cart", cart);
+            }
+
+            cart = HttpContext.Current.Session["Cart"] as List<CartProduct>;
+            return cart;
+        }
+        private void addToCart(int id, string name, decimal price, int amount)
+        {
+            bool newProduct = true;
+
+            foreach (CartProduct product in this.items)
+            {
+                if (product.Id == id)
+                {
+                    newProduct = false;
+                    product.Amount += amount;
+                }
+            }
+            if (newProduct)
+            {
+                this.items.Add(new CartProduct(id, name, price, amount));
+            }
+        }
     }
 }

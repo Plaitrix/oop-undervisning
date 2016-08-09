@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cart.cs" />
+    <Compile Include="CartProduct.cs" />
     <Compile Include="Deafult.aspx.cs">
       <DependentUpon>Deafult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -14,7 +14,7 @@ namespace KurvClass
             this.items = ShopCart();
         }
 
-        public List<CartProduct> Items { get { return this.items } }
+        public List<CartProduct> Items { get { return this.items; } }
         private List<CartProduct> ShopCart()
         {
             List<CartProduct> cart = new List<CartProduct>();

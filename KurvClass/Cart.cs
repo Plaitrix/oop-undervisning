@@ -5,43 +5,107 @@ using System.Web;
 
 namespace KurvClass
 {
+    [Serializable]
+
     public class Cart
     {
-        private List<CartProduct> items;
+
+        #region Construntor
 
         public Cart()
         {
-            this.items = ShopCart();
+
+            this.items = GrabCart();
         }
 
+        #endregion
+
+        #region method
+
         public List<CartProduct> Items { get { return this.items; } }
-        private List<CartProduct> ShopCart()
+
+        public List<CartProduct> items;
+
+        private List<CartProduct> GrabCart()
         {
             List<CartProduct> cart = new List<CartProduct>();
+
             if (HttpContext.Current.Session["Cart"] == null)
             {
                 HttpContext.Current.Session.Add("Cart", cart);
             }
 
-            cart = HttpContext.Current.Session["Cart"] as List<CartProduct>;
+            cart = (List<CartProduct>)HttpContext.Current.Session["Cart"];
+
             return cart;
         }
-        private void addToCart(int id, string name, decimal price, int amount)
-        {
-            bool newProduct = true;
 
-            foreach (CartProduct product in this.items)
+        public void AddToCart(int id, string name, decimal price, int amount)
+        {
+            CartProduct product = findProduct(id);
+
+            if (product.Id != 0)
             {
-                if (product.Id == id)
-                {
-                    newProduct = false;
-                    product.Amount += amount;
-                }
+                product.Amount += amount;
             }
-            if (newProduct)
+
+            else
             {
                 this.items.Add(new CartProduct(id, name, price, amount));
             }
         }
+
+        public void SetAmountOnProduct(int id, int newAmount)
+        {
+            CartProduct item = findProduct(id);
+            item.Amount = newAmount;
+        }
+
+        public void addAmountOnProduct(int id, int amountToAdd)
+        {
+            CartProduct item = findProduct(id);
+            item.Amount += amountToAdd;
+        }
+
+        public void reduceAmountOnProduct(int id, int amountToReduce)
+        {
+            CartProduct item = findProduct(id);
+            item.Amount -= amountToReduce;
+        }
+
+        public CartProduct findProduct(int id)
+        {
+            foreach (CartProduct product in this.items)
+            {
+                if (product.Id == id)
+                {
+                    return product;
+                }
+            }
+
+            return new CartProduct();
+        }
+
+        public void removeProduct(int id)
+        {
+            CartProduct item = findProduct(id);
+
+            if (item.Id != 0)
+            {
+                this.items.Remove(item);
+            }
+        }
+
+        public void removeallProducts()
+        {
+            if (HttpContext.Current.Session["Cart"] != null)
+            {
+                HttpContext.Current.Session.Remove("Cart");
+            }
+
+            this.items = new List<CartProduct>();
+        }
+
+        #endregion
     }
 }

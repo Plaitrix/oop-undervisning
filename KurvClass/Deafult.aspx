@@ -5,45 +5,50 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <table>
-                <tr>
-                    <td>ID</td>
-                    <td>
-                        <asp:TextBox ID="TextBox_id" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Navn</td>
-                    <td>
-                        <asp:TextBox ID="TextBox_name" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Pris</td>
-                    <td>
-                        <asp:TextBox ID="TextBox_price" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Antal</td>
-                    <td>
-                        <asp:TextBox ID="TextBox_amount" runat="server"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <asp:Button ID="Button_submit" Text="Put i kurv" OnClick="Button_submit_Clicked" runat="server" />
-                    </td>
-                </tr>
-            </table>
+        <div id="wrapper">
+    
+        <asp:Repeater ID="Repeater_Products" runat="server">
 
-            <asp:GridView ID="GV_cart" runat="server"></asp:GridView>
+            <HeaderTemplate>
+                <table>
+                    <thead>
+                        <th><h2>Produktnavn</h2></th>
+                        <th><h2>Pris</h2></th>
+                        <th><h2>Beskrivelse</h2></th>
+                        <th></th>
+                    </thead>
+            </HeaderTemplate>
 
-        </div>
-    </form>
-</body>
+            <ItemTemplate>
+                <tr>
+                    <th><p><%#Eval("Navn")%></p></th>
+                    <th><p><%#Eval("Pris")%></p></th>
+                    <th><p><%#Eval("Beskrivelse")%></p></th>
+                    <th> <asp:ImageButton ID="ImageButton_AddToCart" CommandArgument='<%#Eval("ProduktID")%>' OnCommand="ImageButton_AddToCart_Command" width="50" height="36" runat="server" ImageUrl="img/add-to-cart-dark.png" /> </th>
+                </tr>
+            </ItemTemplate>
+
+
+            <FooterTemplate>
+                    
+                </table>
+            </FooterTemplate>
+
+        </asp:Repeater>
+
+            <asp:Label ID="Label_ProductChosen" runat="server" Text=""></asp:Label>
+
+        <br />
+
+        <div id="right" runat="server" visible="false">
+            <a href="CheckOut.aspx"> <p><b>Go To Cart</b></p> <img src="img/GoToCart.png" width="77" height="65" onclick="CheckOut_Click"/> </a>
+        </div><!-- right slut -->
+
+
+        </div><!-- wrapper slut -->
+    </form></body>
 </html>

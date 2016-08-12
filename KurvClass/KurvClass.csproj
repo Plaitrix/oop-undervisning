@@ -65,12 +65,37 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+    <Content Include="checkOut.ascx" />
+    <Content Include="checkout.aspx" />
     <Content Include="Deafult.aspx" />
+    <Content Include="img\add-to-cart-dark.png" />
+    <Content Include="img\GoToCart.png" />
+    <Content Include="img\success-gif.gif" />
+    <Content Include="StyleSheet.css" />
+    <Content Include="Succes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cart.cs" />
     <Compile Include="CartProduct.cs" />
+    <Compile Include="checkOut.ascx.cs">
+      <DependentUpon>checkOut.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkOut.ascx.designer.cs">
+      <DependentUpon>checkOut.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="checkout.aspx.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkout.aspx.designer.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Deafult.aspx.cs">
       <DependentUpon>Deafult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -78,7 +103,15 @@
     <Compile Include="Deafult.aspx.designer.cs">
       <DependentUpon>Deafult.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Ordrer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Succes.aspx.cs">
+      <DependentUpon>Succes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Succes.aspx.designer.cs">
+      <DependentUpon>Succes.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

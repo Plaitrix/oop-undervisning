@@ -22,57 +22,30 @@ namespace KurvClass {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TextBox_id control.
+        /// Repeater_Products control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_id;
+        protected global::System.Web.UI.WebControls.Repeater Repeater_Products;
         
         /// <summary>
-        /// TextBox_name control.
+        /// Label_ProductChosen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_name;
+        protected global::System.Web.UI.WebControls.Label Label_ProductChosen;
         
         /// <summary>
-        /// TextBox_price control.
+        /// right control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_price;
-        
-        /// <summary>
-        /// TextBox_amount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_amount;
-        
-        /// <summary>
-        /// Button_submit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_submit;
-        
-        /// <summary>
-        /// GV_cart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV_cart;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl right;
     }
 }

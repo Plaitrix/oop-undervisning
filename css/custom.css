@@ -1,0 +1,27 @@
+﻿body {
+}
+
+.logo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.nav-font {
+    font-family: OpenSans-ExtraBold;
+    font-size: 18px;
+    color: #fff;
+}
+
+nav ul li a {
+    color: #f0f0f0;
+}
+
+
+.navbar-nav > li:hover > a {
+    color: #801c1c;
+    background: #353537;
+}
+
+.active {
+    background: #ffc000;
+}
